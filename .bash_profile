@@ -5,17 +5,14 @@ if [ -f ~/.bashrc ]; then
     . ~/.bashrc
 fi
 
-# User specific environment and startup programs
-
 PATH=$PATH:$HOME/bin:$HOME/.dotfiles/bin
 
 export PATH
 
-#  Customize BASH PS1 prompt to show current GIT repository and branch.
-
-export TERM=xterm-color
-export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
-export CLICOLOR=1
+# The only modes supported by tmux are screen and screen-256color
+export TERM=screen-256color
+#export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
+#export CLICOLOR=1
 
 # Reset
 Color_Off="\[\033[0m\]"       # Text Reset
@@ -100,7 +97,7 @@ Jobs="\j"
 
 source ${HOME}/.dotfiles/git-prompt.sh
 
-export PS1='\n'$On_White$Time12h$Cyan' \u '$Purple'\h$(if [ "$YROOT_NAME" != "" ]; then \
+export PS1='\n'$On_White$Time12h$Cyan' \u '$Purple'\H$(if [ "$YROOT_NAME" != "" ]; then \
   echo "'$Green'" $YROOT_NAME; \
 fi)'$IBlack$Color_Off'$(git branch &>/dev/null;\
 if [ $? -eq 0 ]; then \
@@ -115,7 +112,7 @@ if [ $? -eq 0 ]; then \
 else \
  # @2 - Prompt when not in GIT repo
  echo " '$Yellow$PathShort$Color_Off' "; \
-fi)\n↪'$Color_Off' '
+fi)\n\$'$Color_Off' '
 
 # Shortcuts
 
