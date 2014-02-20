@@ -222,3 +222,7 @@ rumount() {
 }
 
 complete -W "$(echo $(grep '^ssh ' ~/.bash_history | sed 's/^ssh //') $(cat ~/.ssh/known_hosts | cut -d, -f1) | sort -u)" ssh
+
+if [ -f ~/.dotfiles/dotfiles-yahoo/.ybash_profile ]; then
+    . ~/.dotfiles/dotfiles-yahoo/.ybash_profile
+fi
