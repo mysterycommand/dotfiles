@@ -12,7 +12,7 @@ export PATH
 # The only modes supported by tmux are screen and screen-256color
 export TERM=screen-256color
 #export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
-#export CLICOLOR=1
+export CLICOLOR=1
 
 # Reset
 Color_Off="\[\033[0m\]"       # Text Reset
@@ -159,10 +159,8 @@ alias g='grep -i'  #case insensitive grep
 alias f='find . -iname'
 alias ducks='du -cks * | sort -rn|head -11' # Lists the size of all the folders and files
 alias top='top -o cpu'
-
+alias dev=/opt/init.d/dev
 alias svn-add-all='svn add `find | grep -vw "svn" | xargs`'
-alias mysql='/usr/local/mysql/bin/mysql'
-alias mysqladmin='/usr/local/mysql/bin/mysqladmin'
 alias ysgr='yinst set | grep -i '
 export HISTFILE=/Volumes/arsenal/var/.bash_history
 export HISTFILESIZE=20000
