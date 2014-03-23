@@ -97,7 +97,7 @@ Jobs="\j"
 
 source ${HOME}/.dotfiles/git-prompt.sh
 
-export PS1='\n'$On_White$Time12h$Cyan' \u '$Purple'\H$(if [ "$YROOT_NAME" != "" ]; then \
+export PS1='\n'$IYellow$Time12h$Cyan' \u '$Purple'\H$(if [ "$YROOT_NAME" != "" ]; then \
   echo "'$Green'" $YROOT_NAME; \
 fi)'$IBlack$Color_Off'$(git branch &>/dev/null;\
 if [ $? -eq 0 ]; then \
