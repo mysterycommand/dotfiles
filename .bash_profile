@@ -6,8 +6,10 @@ if [ -f ~/.bashrc ]; then
 fi
 
 PATH=$PATH:$HOME/bin:$HOME/.dotfiles/bin
-
 export PATH
+
+# Load RVM into a shell session *as a function*
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 source ${HOME}/.dotfiles/colors.sh
 
@@ -37,13 +39,13 @@ else \
 fi)\n\$'$Color_Off' '
 
 # Shortcuts
-
 alias resource='source ${HOME}/.bash_profile'
 alias ll='ls -ltrG'
 alias ..='cd ..'
 alias ...='cd .. ; cd ..'
-# alias +=pushd
-
+alias +=pushd
+alias clr='clear && $_'
+alias reup='brew update && npm update -g && rvm get stable'
 
 # # extremely powerful stuff follows, beware:
 # # save bookmarks to directories by typing "save foo" which can be later accessed by "cd foo"
