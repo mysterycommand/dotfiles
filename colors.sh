@@ -1,6 +1,6 @@
-# The only modes supported by tmux are screen and screen-256color
+#!/bin/sh
+
 export TERM=xterm-256color
-#export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
 export CLICOLOR=1
 
 # Reset

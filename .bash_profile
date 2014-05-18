@@ -59,7 +59,7 @@ alias ...='cd .. ; cd ..'
 # source ~/.dirs  # Initialization for the above 'save' facility: source the .sdirs file
 # shopt -s cdable_vars # set the bash option so that no '$' is required when using the above facility
 
-# export HISTCONTROL=ignoredups # Ignores dupes in the history
+export HISTCONTROL=ignoredups # Ignores dupes in the history
 # shopt -s checkwinsize # After each command, checks the windows size and changes lines and columns
 
 # # bash completion settings (actually, these are readline settings)
@@ -79,10 +79,10 @@ alias ...='cd .. ; cd ..'
 # alias dev=/opt/init.d/dev
 # alias svn-add-all='svn add `find | grep -vw "svn" | xargs`'
 # alias ysgr='yinst set | grep -i '
-# export HISTFILE=/Volumes/arsenal/var/.bash_history
-# export HISTFILESIZE=20000
-# export HISTCONTROL=ignoreboth
-# shopt -s histappend
+export HISTFILE=${HOME}/.bash_history
+export HISTFILESIZE=20000
+export HISTCONTROL=ignoreboth
+shopt -s histappend
 
 # export SVN_EDITOR=vi
 # SSH_ENV=$HOME/.ssh/environment
