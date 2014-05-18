@@ -59,7 +59,6 @@ alias ...='cd .. ; cd ..'
 # source ~/.dirs  # Initialization for the above 'save' facility: source the .sdirs file
 # shopt -s cdable_vars # set the bash option so that no '$' is required when using the above facility
 
-export HISTCONTROL=ignoredups # Ignores dupes in the history
 # shopt -s checkwinsize # After each command, checks the windows size and changes lines and columns
 
 # # bash completion settings (actually, these are readline settings)
