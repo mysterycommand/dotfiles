@@ -106,34 +106,5 @@ shopt -s histappend
 #      startagent;
 # fi
 
-# # Remote Mount (sshfs)
-# # creates mount folder and mounts the remote filesystem
-# rmount() {
-#     local host folder mname
-#     host="${1%%:*}:"
-#     [[ ${1%:} == ${host%%:*} ]] && folder='' || folder=${1##*:}
-#     if [[ $2 ]]; then
-#         mname=$2
-#     else
-#         mname=${folder##*/}
-#         [[ "$mname" == "" ]] && mname=${host%%:*}
-#     fi
-#     if [[ $(grep -i "host ${host%%:*}" ~/.ssh/config) != '' ]]; then
-#         mkdir -p /Volumes/$mname > /dev/null
-#         sshfs $host$folder /Volumes/$mname -oCiphers=arcfour,auto_cache,reconnect,defer_permissions,negative_vncache,volname=$mname,noappledouble && echo "mounted /Volumes/$mname"
-#     else
-#         echo "No entry found for ${host%%:*}"
-#         return 1
-#     fi
-# }
-
-# rumount() {
-#     if [[ $1 == "" ]]; then
-#         echo "You need to specify a mounted volume name."
-#     else
-#         [[ $(mount | grep "/Volumes/$1") ]] && umount /Volumes/$1
-#     fi
-# }
-
 # complete -W "$(echo $(grep '^ssh ' ~/.bash_history | sed 's/^ssh //') $(cat ~/.ssh/known_hosts | cut -d, -f1) | sort -u)" ssh
 
