@@ -45,7 +45,9 @@ alias ..='cd ..'
 alias ...='cd .. ; cd ..'
 alias +=pushd
 alias clr='clear && $_'
-alias reup='brew update && npm update -g && rvm get stable'
+alias reup='brew update && npm -g update && rvm get stable && gem update --system'
+
+md () { mkdir -pv "$@" && cd "$_"; }
 
 # # extremely powerful stuff follows, beware:
 # # save bookmarks to directories by typing "save foo" which can be later accessed by "cd foo"
