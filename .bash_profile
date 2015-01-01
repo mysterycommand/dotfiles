@@ -41,11 +41,12 @@ fi)\n\$'$Color_Off' '
 # Shortcuts
 alias resource='source ${HOME}/.bash_profile'
 alias ll='ls -ltrG'
+alias lla='ll -a'
 alias ..='cd ..'
 alias ...='cd .. ; cd ..'
 alias +=pushd
 alias clr='clear && $_'
-alias reup='brew update && npm -g update && rvm get stable && gem update --system'
+alias reup='brew update && npm -g up && rvm get stable && rvm use default && gem update --system'
 
 md () { mkdir -pv "$@" && cd "$_"; }
 
