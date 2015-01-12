@@ -46,7 +46,7 @@ alias ..='cd ..'
 alias ...='cd .. ; cd ..'
 alias +=pushd
 alias clr='clear && $_'
-alias reup='brew update && npm -g up && rvm get stable && rvm use default && gem update --system'
+alias reup='brew update && sh $HOME/.dotfiles/npm-upgrade.sh && rvm get stable && rvm use default && gem update --system && gem update'
 
 md () { mkdir -pv "$@" && cd "$_"; }
 
@@ -67,14 +67,14 @@ md () { mkdir -pv "$@" && cd "$_"; }
 # shopt -s checkwinsize # After each command, checks the windows size and changes lines and columns
 
 # # bash completion settings (actually, these are readline settings)
-# bind "set completion-ignore-case on" # note: bind is used instead of setting these in .inputrc.  This ignores case in bash completion
-# bind "set bell-style none" # No bell, because it's damn annoying
-# bind "set show-all-if-ambiguous On" # this allows you to automatically show completion without double tab-ing
+bind "set completion-ignore-case on" # note: bind is used instead of setting these in .inputrc.  This ignores case in bash completion
+bind "set bell-style none" # No bell, because it's damn annoying
+bind "set show-all-if-ambiguous On" # this allows you to automatically show completion without double tab-ing
 
 # # Turn on advanced bash completion if the file exists (get it here: http://www.caliban.org/bash/index.shtml#completion)
-# if [ -f /etc/bash_completion ]; then
-#     . /etc/bash_completion
-# fi
+if [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+fi
 
 # alias g='grep -i'  #case insensitive grep
 # alias f='find . -iname'
