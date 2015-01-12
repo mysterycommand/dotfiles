@@ -14,5 +14,8 @@ trim_trailing_whitespace = false
 [*.json]
 indent_size = 2
 
-[{.jshintrc,.sublime-settings,.sublime-keymap}]
+[{.jshintrc}]
+indent_size = 2
+
+[*.{sublime-settings,sublime-keymap}]
 indent_size = 2
