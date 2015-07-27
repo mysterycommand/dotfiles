@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 echo Symlinking ~/.bash_profile.
 ln -s ~/.dotfiles/.bash_profile ~/.bash_profile
 echo Symlinking ~/.screenrc.
