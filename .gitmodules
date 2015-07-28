@@ -1,3 +1,0 @@
-[submodule "dotfiles-yahoo"]
-	path = dotfiles-yahoo
-	url = git@git.corp.yahoo.com:alexnj/dotfiles-yahoo.git
