@@ -44,6 +44,18 @@ if [[ -n `type __git_ps1` ]]; then
     PROMPT_COMMAND='__git_ps1 "\n\w" "\n\T \$ "'
 fi
 
+# Readline settings
+# NOTE: Bind is used instead of setting these in .inputrc.
+bind "set bell-style none"              # No bell (the sound)
+bind "set completion-ignore-case on"    # Ignore case in bash completion
+bind "set show-all-if-ambiguous On"     # Automatically show completion without double-tab-ing
+
+# History settings
+export HISTFILE=~/.bash_history
+export HISTFILESIZE=20000
+export HISTCONTROL=ignoreboth
+shopt -s histappend
+
 # Aliases
 alias clr="clear && clear"
 alias ll="ls -ltrG"
