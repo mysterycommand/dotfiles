@@ -60,6 +60,7 @@ shopt -s histappend
 alias clr="clear && clear"
 alias ll="ls -ltrG"
 alias lla="ll -a"
+alias ..="cd .."
 alias resource=". ~/.bash_profile"
 
 md() { mkdir -pv "$@" && cd "$_"; }
