@@ -19,5 +19,5 @@
     df = diff
     lg = log -p
     up = fetch --all
-    mom = "!get fetch; git merge origin/master"
+    mom = "!git fetch; git merge origin/master"
     dfs = diff --staged
