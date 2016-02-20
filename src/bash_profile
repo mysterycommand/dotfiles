@@ -58,6 +58,14 @@ alias lla="ll -a"
 alias ..="cd .."
 alias resource=". ~/.bash_profile"
 
+alias rebrew="brew update && brew upgrade"
+alias renvm="nvm install stable && nvm alias default stable"
+alias renpm="npm -g i npm && npm -g up"
+alias rervm="rvm get stable && rvm use default"
+alias regem="gem update --system && gem update"
+
+alias reup="rebrew && renvm && renpm && rervm && regem"
+
 md() { mkdir -pv "$@" && cd "$_"; }
 
 # RVM - RVM wants to go last
