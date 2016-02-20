@@ -11,11 +11,6 @@ fi
 PATH=$PATH:$HOME/bin
 export PATH
 
-# RVM
-if [[ -s ~/.rvm/scripts/rvm ]]; then
-    . ~/.rvm/scripts/rvm
-fi
-
 # NVM
 if [ -f /usr/local/opt/nvm/nvm.sh ]; then
     export NVM_DIR=~/.nvm
@@ -64,3 +59,9 @@ alias ..="cd .."
 alias resource=". ~/.bash_profile"
 
 md() { mkdir -pv "$@" && cd "$_"; }
+
+# RVM - RVM wants to go last
+if [[ -s ~/.rvm/scripts/rvm ]]; then
+    # Load RVM into a shell session *as a function*
+    . ~/.rvm/scripts/rvm
+fi
