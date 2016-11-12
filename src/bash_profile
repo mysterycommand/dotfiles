@@ -8,7 +8,7 @@ if [ -f ~/.bash_local ]; then
     . ~/.bash_local
 fi
 
-PATH=$PATH:$HOME/bin
+PATH=$PATH:~/bin
 export PATH
 
 # NVM
@@ -67,6 +67,25 @@ alias regem="gem update --system && gem update"
 alias reup="rebrew && renvm && renpm && rervm && regem"
 
 md() { mkdir -pv "$@" && cd "$_"; }
+
+# # SSH Agent
+# SSH_ENV=~/.ssh/environment
+
+# function startagent {
+#     /usr/bin/ssh-agent | sed 's/^echo/# echo/' > ${SSH_ENV};
+#     chmod 600 ${SSH_ENV};
+#     . ${SSH_ENV} > /dev/null;
+#     /usr/bin/ssh-add;
+# }
+
+# if [ -f "${SSH_ENV}" ]; then
+#     . ${SSH_ENV} > /dev/null;
+#     ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+#         startagent;
+#     };
+# else
+#     startagent;
+# fi
 
 # RVM - RVM wants to go last
 if [[ -s ~/.rvm/scripts/rvm ]]; then
