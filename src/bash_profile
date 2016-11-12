@@ -9,6 +9,7 @@ if [ -f ~/.bash_local ]; then
 fi
 
 PATH=$PATH:~/bin
+PATH=$PATH:$HOME/.yarn/bin
 export PATH
 
 # NVM
