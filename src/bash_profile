@@ -1,116 +1,95 @@
-#@IgnoreInspection BashAddShebang
 # .bash_profile
 
-# Get the aliases and functions
 if [ -f ~/.bashrc ]; then
     . ~/.bashrc
 fi
 
-PATH=$PATH:$HOME/bin:$HOME/.dotfiles/bin
-export PATH
-
-# Load RVM into a shell session *as a function*
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
-source ${HOME}/.dotfiles/colors.sh
-
-# Various variables you might want for your PS1 prompt instead
-Time12h="\T"
-Time12a="\@"
-PathShort="\w"
-PathFull="\W"
-NewLine="\n"
-Jobs="\j"
-
-source ${HOME}/.dotfiles/git-prompt.sh
-
-export PS1='\n'$IYellow$Time12h$Cyan' \u '$Purple'\H'$IBlack$Color_Off'$(git branch &>/dev/null;\
-if [ $? -eq 0 ]; then \
- echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
- if [ "$?" -eq "0" ]; then \
-   # @4 - Clean repository - nothing to commit
-   echo " '$Green'"$(__git_ps1 "(%s)"); \
- else \
-   # @5 - Changes to working tree
-   echo " '$IRed'"$(__git_ps1 "{%s}"); \
- fi) '$BYellow$PathShort$Color_Off' "; \
-else \
- # @2 - Prompt when not in GIT repo
- echo " '$Yellow$PathShort$Color_Off' "; \
-fi)\n\$'$Color_Off' '
-
-# Shortcuts
-alias resource='source ${HOME}/.bash_profile'
-alias ll='ls -ltrG'
-alias lla='ll -a'
-alias ..='cd ..'
-alias ...='cd .. ; cd ..'
-alias +=pushd
-alias clr='clear && $_'
-alias reup='brew update && sh $HOME/.dotfiles/npm-upgrade.sh && rvm get stable && rvm use default && gem update --system && gem update'
-
-md () { mkdir -pv "$@" && cd "$_"; }
-
-# # extremely powerful stuff follows, beware:
-# # save bookmarks to directories by typing "save foo" which can be later accessed by "cd foo"
-
-# if [ ! -f ~/.dirs ]; then  # if doesn't exist, create it
-#         touch ~/.dirs
-# fi
-
-# alias show='cat ~/.dirs'
-# save (){
-#         command sed "/!$/d" ~/.dirs > ~/.dirs1; \mv ~/.dirs1 ~/.dirs; echo "$@"=\"`pwd`\" >> ~/.dirs; source ~/.dirs ;
-# }
-# source ~/.dirs  # Initialization for the above 'save' facility: source the .sdirs file
-# shopt -s cdable_vars # set the bash option so that no '$' is required when using the above facility
-
-# shopt -s checkwinsize # After each command, checks the windows size and changes lines and columns
-
-# # bash completion settings (actually, these are readline settings)
-bind "set completion-ignore-case on" # note: bind is used instead of setting these in .inputrc.  This ignores case in bash completion
-bind "set bell-style none" # No bell, because it's damn annoying
-bind "set show-all-if-ambiguous On" # this allows you to automatically show completion without double tab-ing
-
-# # Turn on advanced bash completion if the file exists (get it here: http://www.caliban.org/bash/index.shtml#completion)
-if [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
+if [ -f ~/.bash_local ]; then
+    . ~/.bash_local
 fi
 
-# alias g='grep -i'  #case insensitive grep
-# alias f='find . -iname'
-# alias ducks='du -cks * | sort -rn|head -11' # Lists the size of all the folders and files
-# alias top='top -o cpu'
-# alias dev=/opt/init.d/dev
-# alias svn-add-all='svn add `find | grep -vw "svn" | xargs`'
-# alias ysgr='yinst set | grep -i '
-export HISTFILE=${HOME}/.bash_history
+PATH=$PATH:~/bin
+PATH=$PATH:$HOME/.yarn/bin
+export PATH
+
+# NVM
+if [ -f /usr/local/opt/nvm/nvm.sh ]; then
+    export NVM_DIR=~/.nvm
+    . /usr/local/opt/nvm/nvm.sh
+fi
+
+# Bash completion
+if [ -f /usr/local/etc/bash_completion ]; then
+    . /usr/local/etc/bash_completion
+fi
+
+# Git prompt
+if [ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]; then
+    . /usr/share/git-core/contrib/completion/git-prompt.sh
+fi
+
+# Git prompt config
+if [[ -n `type __git_ps1` ]]; then
+    GIT_PS1_SHOWDIRTYSTATE=1
+    GIT_PS1_SHOWSTASHSTATE=1
+    GIT_PS1_SHOWUNTRACKEDFILES=1
+    GIT_PS1_SHOWUPSTREAM="verbose"
+    # GIT_PS1_STATESEPERATOR=SP
+    GIT_PS1_SHOWCOLORHINTS=1
+    # PS1='[\W$(__git_ps1 " (%s)")]\n\T \$ '
+    PROMPT_COMMAND='__git_ps1 "\n\w" "\n\T \$ "'
+fi
+
+# Readline settings
+# NOTE: Bind is used instead of setting these in .inputrc.
+bind "set bell-style none"              # No bell (the sound)
+bind "set completion-ignore-case on"    # Ignore case in bash completion
+bind "set show-all-if-ambiguous On"     # Automatically show completion without double-tab-ing
+
+# History settings
+export HISTFILE=~/.bash_history
 export HISTFILESIZE=20000
 export HISTCONTROL=ignoreboth
 shopt -s histappend
 
-# export SVN_EDITOR=vi
-# SSH_ENV=$HOME/.ssh/environment
+# Aliases
+alias clr="clear && clear"
+alias ll="ls -ltrG"
+alias lla="ll -a"
+alias ..="cd .."
+alias resource=". ~/.bash_profile"
+
+alias rebrew="brew update && brew upgrade"
+alias renvm="nvm install stable && nvm alias default stable"
+alias renpm="npm -g i npm && npm -g up"
+alias rervm="rvm get stable && rvm use default"
+alias regem="gem update --system && gem update"
+
+alias reup="rebrew && renvm && renpm && rervm && regem"
+
+md() { mkdir -pv "$@" && cd "$_"; }
+
+# # SSH Agent
+# SSH_ENV=~/.ssh/environment
 
 # function startagent {
-#      echo "Initialising new SSH agent..."
-#      /usr/bin/ssh-agent | sed 's/^echo/#echo/' > ${SSH_ENV}
-#      echo succeeded
-#      chmod 600 ${SSH_ENV}
-#      . ${SSH_ENV} > /dev/null
-#      /usr/bin/ssh-add;
+#     /usr/bin/ssh-agent | sed 's/^echo/# echo/' > ${SSH_ENV};
+#     chmod 600 ${SSH_ENV};
+#     . ${SSH_ENV} > /dev/null;
+#     /usr/bin/ssh-add;
 # }
 
-# # Source SSH settings, if applicable
-
 # if [ -f "${SSH_ENV}" ]; then
-#      . ${SSH_ENV} > /dev/null
-#      ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
-#          startagent;
-#      }
+#     . ${SSH_ENV} > /dev/null;
+#     ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+#         startagent;
+#     };
 # else
-#      startagent;
+#     startagent;
 # fi
 
-# complete -W "$(echo $(grep '^ssh ' ~/.bash_history | sed 's/^ssh //') $(cat ~/.ssh/known_hosts | cut -d, -f1) | sort -u)" ssh
-
+# RVM - RVM wants to go last
+if [[ -s ~/.rvm/scripts/rvm ]]; then
+    # Load RVM into a shell session *as a function*
+    . ~/.rvm/scripts/rvm
+fi
