@@ -8,8 +8,8 @@ if [ -f ~/.bash_local ]; then
     . ~/.bash_local
 fi
 
+PATH=$PATH:./node_modules/.bin
 PATH=$PATH:~/bin
-PATH=$PATH:$HOME/.yarn/bin
 export PATH
 
 # NVM
@@ -60,7 +60,7 @@ alias ..="cd .."
 alias resource=". ~/.bash_profile"
 
 alias rebrew="brew update && brew upgrade"
-alias renvm="nvm install stable && nvm alias default stable"
+alias renvm="nvm install lts/* && nvm alias default lts/*"
 alias renpm="npm -g i npm && npm -g up"
 alias rervm="rvm get stable && rvm use default"
 alias regem="gem update --system && gem update"
