@@ -35,6 +35,6 @@
     st = status
     df = diff
     lg = log -p
-    up = fetch --all
+    fap = fetch --all --prune
     mom = "!git fetch; git merge origin/master"
     dfs = diff --staged
