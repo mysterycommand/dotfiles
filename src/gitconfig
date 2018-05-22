@@ -1,15 +1,15 @@
 [user]
-    email = matt@mysterycommand.com
-    name = Matt Hayes
+  email = matt@mysterycommand.com
+  name = Matt Hayes
 [push]
-    default = simple
+  default = simple
 [filter "media"]
-    clean = git-media-clean %f
-    smudge = git-media-smudge %f
+  clean = git-media-clean %f
+  smudge = git-media-smudge %f
 [filter "lfs"]
-    clean = git-lfs clean %f
-    smudge = git-lfs smudge %f
-    required = true
+  clean = git-lfs clean %f
+  smudge = git-lfs smudge %f
+  required = true
 [color]
 	branch = auto
 	diff = auto
@@ -28,13 +28,13 @@
 	changed = green
 	untracked = cyan
 [alias]
-    br = branch
-    co = checkout
-    cm = commit
-    rb = rebase
-    st = status
-    df = diff
-    lg = log -p
-    fap = fetch --all --prune
-    mom = "!git fetch; git merge origin/master"
-    dfs = diff --staged
+  br = branch
+  co = checkout
+  cm = commit
+  rb = rebase
+  st = status
+  df = diff
+  lg = log -p
+  fap = fetch --all --prune
+  mom = "!git fetch; git merge origin/master"
+  dfs = diff --staged

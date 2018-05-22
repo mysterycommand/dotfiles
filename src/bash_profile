@@ -29,9 +29,14 @@ if [ -f /usr/local/etc/bash_completion ]; then
     . /usr/local/etc/bash_completion
 fi
 
+# Git completion
+if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
+    . /usr/local/etc/bash_completion.d/git-completion.bash
+fi
+
 # Git prompt
-if [ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]; then
-    . /usr/share/git-core/contrib/completion/git-prompt.sh
+if [ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]; then
+    . /usr/local/etc/bash_completion.d/git-prompt.sh
 fi
 
 # Git prompt config
