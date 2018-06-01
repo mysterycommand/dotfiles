@@ -80,6 +80,17 @@ alias reup="rebrew && renvm && renpm && rervm && regem"
 
 md() { mkdir -pv "$@" && cd "$_"; }
 
+function sizes {
+  echo "minified gzipped  filename"
+  echo "======== =======  ========"
+  for file in "$@"
+  do
+    minified=$(cat $file | wc -c | gnumfmt --to=iec --suffix=B)
+    gzipped=$(gzip -9 -c $file | wc -c | gnumfmt --to=iec --suffix=B)
+    printf "%8s %8s  %s\n" $minified $gzipped $file
+  done
+}
+
 # # SSH Agent
 # SSH_ENV=~/.ssh/environment
 
