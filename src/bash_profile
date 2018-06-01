@@ -80,6 +80,7 @@ alias reup="rebrew && renvm && renpm && rervm && regem"
 
 md() { mkdir -pv "$@" && cd "$_"; }
 
+# gnumfmt isn't preinstalled on macOS, so `brew install coreutils` first
 function sizes {
   echo "minified gzipped  filename"
   echo "======== =======  ========"
