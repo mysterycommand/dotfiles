@@ -27,6 +27,8 @@
 	added = yellow
 	changed = green
 	untracked = cyan
+[core]
+  excludesfile = ~/.gitexcludes
 [alias]
   br = branch
   co = checkout
