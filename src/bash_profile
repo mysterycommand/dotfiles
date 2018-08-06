@@ -82,8 +82,8 @@ md() { mkdir -pv "$@" && cd "$_"; }
 
 # gnumfmt isn't preinstalled on macOS, so `brew install coreutils` first
 function sizes {
-  echo "minified gzipped  filename"
-  echo "======== =======  ========"
+  echo "minified  gzipped  filename"
+  echo "========  =======  ========"
   for file in "$@"
   do
     minified=$(cat $file | wc -c | gnumfmt --to=iec --suffix=B)
