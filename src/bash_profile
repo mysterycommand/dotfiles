@@ -11,11 +11,6 @@ fi
 PATH=$PATH:./node_modules/.bin
 PATH=$PATH:~/bin
 
-# Setting PATH for Python 3.6
-# The original version is saved in .bash_profile.pysave
-PATH=/Library/Frameworks/Python.framework/Versions/3.6/bin:$PATH
-PATH=~/Library/Python/3.6/bin:$PATH
-
 export PATH
 
 # NVM
@@ -110,9 +105,3 @@ function sizes {
 # else
 #     startagent;
 # fi
-
-# RVM - RVM wants to go last
-if [[ -s ~/.rvm/scripts/rvm ]]; then
-    # Load RVM into a shell session *as a function*
-    . ~/.rvm/scripts/rvm
-fi
