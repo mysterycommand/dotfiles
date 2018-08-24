@@ -70,7 +70,7 @@ alias renvm="nvm install lts/* && nvm alias default lts/*"
 alias renpm="npm -g i npm && npm -g up"
 alias regem="gem update --system && gem update"
 
-alias reup="rebrew && renvm && renpm && rervm && regem"
+alias reup="rebrew && renvm && renpm && regem"
 
 md() { mkdir -pv "$@" && cd "$_"; }
 
