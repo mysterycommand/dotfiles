@@ -39,4 +39,5 @@
   lg = log -p
   fap = fetch --all --prune
   mom = "!git fetch; git merge origin/master"
+  mum = "!git fetch; git merge upstream/master"
   dfs = diff --staged
