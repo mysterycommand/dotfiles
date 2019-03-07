@@ -72,8 +72,9 @@ alias rebrew="brew update && brew upgrade"
 alias renvm="nvm install lts/* && nvm alias default lts/*"
 alias renpm="npm -g i npm && npm -g up"
 alias regem="gem update --system && gem update"
+alias rerust="rustup update && cargo install-update -a"
 
-alias reup="rebrew && renvm && renpm && regem"
+alias reup="rebrew && renvm && renpm && regem && rerust"
 
 md() { mkdir -pv "$@" && cd "$_"; }
 
