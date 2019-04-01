@@ -12,7 +12,11 @@ PATH=$PATH:./node_modules/.bin
 PATH=$PATH:~/bin
 
 PATH=$HOME/.cargo/bin:$PATH
-PATH=/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH
+PATH=/Library/Frameworks/Python.framework/Versions/3.7/bin:$PATH
+
+if which ruby >/dev/null && which gem >/dev/null; then
+    PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+fi
 
 export PATH
 
@@ -68,7 +72,7 @@ alias lla="ll -a"
 alias ..="cd .."
 alias resource=". ~/.bash_profile"
 
-alias rebrew="brew update && brew upgrade yarn --ignore-dependencies && brew upgrade"
+alias rebrew="brew update && brew upgrade"
 alias renvm="nvm install lts/* && nvm alias default lts/*"
 alias renpm="npm -g i npm && npm -g up"
 alias regem="gem update --system && gem update"
