@@ -68,9 +68,19 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git node npm)
+plugins=(git gitfast thefuck zsh_reload)
 
 source $ZSH/oh-my-zsh.sh
+
+# Git prompt config
+if [[ -n `type __git_ps1` ]]; then
+    GIT_PS1_SHOWDIRTYSTATE=1
+    GIT_PS1_SHOWSTASHSTATE=1
+    GIT_PS1_SHOWUNTRACKEDFILES=1
+    GIT_PS1_SHOWUPSTREAM="verbose"
+    GIT_PS1_SHOWCOLORHINTS=1
+    precmd () { __git_ps1 $'\n'"%~" $'\n'"%* $ "}
+fi
 
 # User configuration
 
@@ -102,7 +112,6 @@ alias clr="reset"
 alias ll="ls -ltrG"
 alias lla="ll -a"
 alias ..="cd .."
-alias resource=". ~/.zshrc"
 
 # gnumfmt isn't preinstalled on macOS, so `brew install coreutils` first
 function sizes {
