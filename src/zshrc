@@ -72,6 +72,12 @@ plugins=(git gitfast thefuck zsh_reload)
 
 source $ZSH/oh-my-zsh.sh
 
+# NVM
+if [ -f /usr/local/opt/nvm/nvm.sh ]; then
+    export NVM_DIR=~/.nvm
+    . /usr/local/opt/nvm/nvm.sh
+fi
+
 # Git prompt config
 if [[ -n `type __git_ps1` ]]; then
     GIT_PS1_SHOWDIRTYSTATE=1

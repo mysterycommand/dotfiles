@@ -42,3 +42,6 @@
   mom = "!git fetch; git merge origin/master"
   mum = "!git fetch; git merge upstream/master"
   dfs = diff --staged
+[pager]
+  branch = false
+  diff = false
