@@ -130,10 +130,25 @@ alias ..="cd .."
 function sizes {
   echo "minified  gzipped  filename"
   echo "========  =======  ========"
+
+  tm=0
+  tg=0
+
   for file in "$@"
   do
-    minified=$(cat $file | wc -c | gnumfmt --to=iec --suffix=B)
-    gzipped=$(gzip -9 -c $file | wc -c | gnumfmt --to=iec --suffix=B)
+    m=$(cat $file | wc -c)
+    g=$(gzip -9 -c $file | wc -c)
+
+    tm=$(($tm + $m))
+    tg=$(($tg + $g))
+
+    minified=$(gnumfmt --to=iec --suffix=B "$m")
+    gzipped=$(gnumfmt --to=iec --suffix=B "$g")
     printf "%8s %8s  %s\n" $minified $gzipped $file
   done
+
+  echo "========  =======  ========"
+  totalMinified=$(gnumfmt --to=iec --suffix=B "$tm")
+  totalGzipped=$(gnumfmt --to=iec --suffix=B "$tg")
+  printf "%8s %8s  %s\n" $totalMinified $totalGzipped "*total*"
 }
