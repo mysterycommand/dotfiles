@@ -5,6 +5,7 @@ PATH=$PATH:~/bin
 
 PATH=$HOME/.cargo/bin:$PATH
 PATH=/Library/Frameworks/Python.framework/Versions/3.7/bin:$PATH
+PATH=/usr/local/opt/ruby/bin:$PATH
 
 export PATH
 
