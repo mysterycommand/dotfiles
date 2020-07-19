@@ -7,6 +7,10 @@ PATH=$HOME/.cargo/bin:$PATH
 PATH=/Library/Frameworks/Python.framework/Versions/3.7/bin:$PATH
 PATH=/usr/local/opt/ruby/bin:$PATH
 
+export GOPATH=$HOME/.go
+export GOROOT=$(brew --prefix go)/bin
+PATH=$PATH:$GOPATH/bin:$GOROOT/bin
+
 export PATH
 
 # Path to your oh-my-zsh installation.
