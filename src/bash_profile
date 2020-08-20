@@ -40,7 +40,9 @@ fi
 
 #
 # this is for running linuxbrew inside of WSL 2
-# who am I even!?
+# who am I even!? here's what I installed with brew after getting it running:
+#
+# `brew install gcc bash-completion nvm tree git coreutils`
 #
 
 if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
