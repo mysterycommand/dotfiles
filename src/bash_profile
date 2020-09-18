@@ -38,6 +38,51 @@ if [ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]; then
     . /usr/local/etc/bash_completion.d/git-prompt.sh
 fi
 
+#
+# this is for running linuxbrew inside of WSL 2
+# who am I even!? here's what I installed with brew after getting it running:
+#
+# `brew install gcc bash-completion nvm tree git coreutils`
+#
+
+if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
+    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+fi
+
+# NVM
+if [ -s /home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh ]; then
+    export NVM_DIR=~/.nvm
+    . /home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh # This loads nvm
+fi
+
+if [ -s /home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm ]; then
+    . /home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm  # This loads nvm bash_completion
+fi
+
+# Bash completion
+if [ -r /home/linuxbrew/.linuxbrew/etc/profile.d/bash_completion.sh ]; then
+    . /home/linuxbrew/.linuxbrew/etc/profile.d/bash_completion.sh
+fi
+
+if [ -f /home/linuxbrew/.linuxbrew/etc/bash_completion ]; then
+    . /home/linuxbrew/.linuxbrew/etc/bash_completion
+fi
+
+# Git completion
+if [ -f /home/linuxbrew/.linuxbrew/etc/bash_completion.d/git-completion.bash ]; then
+    . /home/linuxbrew/.linuxbrew/etc/bash_completion.d/git-completion.bash
+fi
+
+# Git prompt
+if [ -f /home/linuxbrew/.linuxbrew/etc/bash_completion.d/git-prompt.sh ]; then
+    . /home/linuxbrew/.linuxbrew/etc/bash_completion.d/git-prompt.sh
+fi
+
+#
+# this is for running linuxbrew inside of WSL 2
+# who am I even!?
+#
+
 # Git prompt config
 if [[ -n `type __git_ps1` ]]; then
     GIT_PS1_SHOWDIRTYSTATE=1
