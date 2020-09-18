@@ -130,6 +130,9 @@ alias ll="ls -ltrG"
 alias lla="ll -a"
 alias ..="cd .."
 
+alias lsnm="find . -name 'node_modules' -type d -prune"
+alias rmnm="lsnm -exec rm -rf '{}' +"
+
 # gnumfmt isn't preinstalled on macOS, so `brew install coreutils` first
 function sizes {
   echo "minified  gzipped  filename"
