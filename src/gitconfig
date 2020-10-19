@@ -39,8 +39,9 @@
   df = diff
   lg = log -p
   fap = fetch --all --prune
-  mom = "!git fetch; git merge origin/master"
-  mum = "!git fetch; git merge upstream/master"
+  # @see https://stackoverflow.com/a/44750379
+  mom = "!git fetch; git merge origin/$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')"
+  mum = "!git fetch; git merge upstream/$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')"
   dfs = diff --staged
 [pager]
   branch = false
