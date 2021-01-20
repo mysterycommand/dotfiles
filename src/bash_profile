@@ -49,11 +49,9 @@ if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
     eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 fi
 
-# NVM
-if [ -s /home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh ]; then
-    export NVM_DIR=~/.nvm
-    . /home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh # This loads nvm
-fi
+# fnm
+# @see https://github.com/Schniz/fnm#bash
+eval "$(fnm env)"
 
 if [ -s /home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm ]; then
     . /home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm  # This loads nvm bash_completion
