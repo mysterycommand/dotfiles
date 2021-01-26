@@ -51,7 +51,9 @@ fi
 
 # fnm
 # @see https://github.com/Schniz/fnm#bash
-eval "$(fnm env)"
+if type fnm &>/dev/null; then
+    eval "$(fnm env)"
+fi
 
 if [ -s /home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm ]; then
     . /home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm  # This loads nvm bash_completion

@@ -83,9 +83,15 @@ plugins=(git gitfast thefuck zsh_reload)
 
 source $ZSH/oh-my-zsh.sh
 
+if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
+    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+fi
+
 # fnm
 # @see https://github.com/Schniz/fnm#zsh
-eval "$(fnm env)"
+if type fnm &>/dev/null; then
+  eval "$(fnm env)"
+fi
 
 # Git prompt config
 if [[ -n `type __git_ps1` ]]; then
