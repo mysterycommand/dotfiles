@@ -84,7 +84,7 @@ plugins=(git gitfast thefuck zsh_reload)
 source $ZSH/oh-my-zsh.sh
 
 if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
-    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+  eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 fi
 
 # fnm
@@ -95,12 +95,12 @@ fi
 
 # Git prompt config
 if [[ -n `type __git_ps1` ]]; then
-    GIT_PS1_SHOWDIRTYSTATE=1
-    GIT_PS1_SHOWSTASHSTATE=1
-    GIT_PS1_SHOWUNTRACKEDFILES=1
-    GIT_PS1_SHOWUPSTREAM="verbose"
-    GIT_PS1_SHOWCOLORHINTS=1
-    precmd () { __git_ps1 $'\n'"%~" $'\n'"%* $ "}
+  GIT_PS1_SHOWDIRTYSTATE=1
+  GIT_PS1_SHOWSTASHSTATE=1
+  GIT_PS1_SHOWUNTRACKEDFILES=1
+  GIT_PS1_SHOWUPSTREAM="verbose"
+  GIT_PS1_SHOWCOLORHINTS=1
+  precmd () { __git_ps1 $'\n'"%~" $'\n'"%* $ "}
 fi
 
 # Homebrew completions
@@ -172,3 +172,22 @@ function sizes {
   totalGzipped=$(gnumfmt --to=iec --suffix=B "$tg")
   printf "%8s %8s  %s\n" $totalMinified $totalGzipped "*total*"
 }
+
+# SSH Agent
+SSH_ENV=~/.ssh/environment
+
+function startagent {
+  /usr/bin/ssh-agent | sed 's/^echo/# echo/' > ${SSH_ENV};
+  chmod 600 ${SSH_ENV};
+  . ${SSH_ENV} > /dev/null;
+  /usr/bin/ssh-add;
+}
+
+if [ -f "${SSH_ENV}" ]; then
+  . ${SSH_ENV} > /dev/null;
+  ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+    startagent;
+  };
+else
+  startagent;
+fi

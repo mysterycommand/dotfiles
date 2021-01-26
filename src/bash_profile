@@ -126,31 +126,31 @@ md() { mkdir -pv "$@" && cd "$_"; }
 
 # gnumfmt isn't preinstalled on macOS, so `brew install coreutils` first
 function sizes {
-  echo "minified  gzipped  filename"
-  echo "========  =======  ========"
-  for file in "$@"
-  do
-    minified=$(cat $file | wc -c | gnumfmt --to=iec --suffix=B)
-    gzipped=$(gzip -9 -c $file | wc -c | gnumfmt --to=iec --suffix=B)
-    printf "%8s %8s  %s\n" $minified $gzipped $file
-  done
+    echo "minified  gzipped  filename"
+    echo "========  =======  ========"
+    for file in "$@"
+    do
+        minified=$(cat $file | wc -c | gnumfmt --to=iec --suffix=B)
+        gzipped=$(gzip -9 -c $file | wc -c | gnumfmt --to=iec --suffix=B)
+        printf "%8s %8s  %s\n" $minified $gzipped $file
+    done
 }
 
-# # SSH Agent
-# SSH_ENV=~/.ssh/environment
+# SSH Agent
+SSH_ENV=~/.ssh/environment
 
-# function startagent {
-#     /usr/bin/ssh-agent | sed 's/^echo/# echo/' > ${SSH_ENV};
-#     chmod 600 ${SSH_ENV};
-#     . ${SSH_ENV} > /dev/null;
-#     /usr/bin/ssh-add;
-# }
+function startagent {
+    /usr/bin/ssh-agent | sed 's/^echo/# echo/' > ${SSH_ENV};
+    chmod 600 ${SSH_ENV};
+    . ${SSH_ENV} > /dev/null;
+    /usr/bin/ssh-add;
+}
 
-# if [ -f "${SSH_ENV}" ]; then
-#     . ${SSH_ENV} > /dev/null;
-#     ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
-#         startagent;
-#     };
-# else
-#     startagent;
-# fi
+if [ -f "${SSH_ENV}" ]; then
+    . ${SSH_ENV} > /dev/null;
+    ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+        startagent;
+    };
+else
+    startagent;
+fi
