@@ -1,15 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 
 PATH=$PATH:./node_modules/.bin
-PATH=$PATH:~/bin
-
-PATH=$HOME/.cargo/bin:$PATH
-PATH=/Library/Frameworks/Python.framework/Versions/3.7/bin:$PATH
-PATH=/usr/local/opt/ruby/bin:$PATH
-
-export GOPATH=$HOME/.go
-PATH=$PATH:$GOPATH/bin
-
 export PATH
 
 # Path to your oh-my-zsh installation.
@@ -83,8 +74,8 @@ plugins=(git gitfast thefuck zsh_reload)
 
 source $ZSH/oh-my-zsh.sh
 
-if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
-  eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+if [ -f `brew --prefix`/bin/brew ]; then
+  eval $(`brew --prefix`/bin/brew shellenv)
 fi
 
 # fnm
