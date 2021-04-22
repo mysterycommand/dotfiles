@@ -9,79 +9,34 @@ if [ -f ~/.bash_local ]; then
 fi
 
 PATH=$PATH:./node_modules/.bin
-PATH=$PATH:~/bin
-
-PATH=$HOME/.cargo/bin:$PATH
-PATH=/Library/Frameworks/Python.framework/Versions/3.7/bin:$PATH
-PATH=/usr/local/opt/ruby/bin:$PATH
+PATH=$PATH:$HOME/.cargo/bin
 
 export PATH
 
-# NVM
-if [ -f /usr/local/opt/nvm/nvm.sh ]; then
-    export NVM_DIR=~/.nvm
-    . /usr/local/opt/nvm/nvm.sh
-fi
+source "$HOME/.cargo/env"
 
+# `brew install bash-completion`
 # Bash completion
-if [ -f /usr/local/etc/bash_completion ]; then
-    . /usr/local/etc/bash_completion
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+    . `brew --prefix`/etc/bash_completion
 fi
 
 # Git completion
-if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
-    . /usr/local/etc/bash_completion.d/git-completion.bash
+if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
+    . `brew --prefix`/etc/bash_completion.d/git-completion.bash
 fi
 
 # Git prompt
-if [ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]; then
-    . /usr/local/etc/bash_completion.d/git-prompt.sh
+if [ -f `brew --prefix`/etc/bash_completion.d/git-prompt.sh ]; then
+    . `brew --prefix`/etc/bash_completion.d/git-prompt.sh
 fi
 
-#
-# this is for running linuxbrew inside of WSL 2
-# who am I even!? here's what I installed with brew after getting it running:
-#
-# `brew install gcc bash-completion nvm tree git coreutils`
-#
-
-if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
-    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-fi
-
+# `brew install fnm`
 # fnm
 # @see https://github.com/Schniz/fnm#bash
 if type fnm &>/dev/null; then
     eval "$(fnm env)"
 fi
-
-if [ -s /home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm ]; then
-    . /home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm  # This loads nvm bash_completion
-fi
-
-# Bash completion
-if [ -r /home/linuxbrew/.linuxbrew/etc/profile.d/bash_completion.sh ]; then
-    . /home/linuxbrew/.linuxbrew/etc/profile.d/bash_completion.sh
-fi
-
-if [ -f /home/linuxbrew/.linuxbrew/etc/bash_completion ]; then
-    . /home/linuxbrew/.linuxbrew/etc/bash_completion
-fi
-
-# Git completion
-if [ -f /home/linuxbrew/.linuxbrew/etc/bash_completion.d/git-completion.bash ]; then
-    . /home/linuxbrew/.linuxbrew/etc/bash_completion.d/git-completion.bash
-fi
-
-# Git prompt
-if [ -f /home/linuxbrew/.linuxbrew/etc/bash_completion.d/git-prompt.sh ]; then
-    . /home/linuxbrew/.linuxbrew/etc/bash_completion.d/git-prompt.sh
-fi
-
-#
-# this is for running linuxbrew inside of WSL 2
-# who am I even!?
-#
 
 # Git prompt config
 if [[ -n `type __git_ps1` ]]; then

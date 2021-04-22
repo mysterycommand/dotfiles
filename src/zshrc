@@ -1,11 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 
 PATH=$PATH:./node_modules/.bin
-PATH=$PATH:~/bin
-
-PATH=$HOME/.cargo/bin:$PATH
-PATH=/Library/Frameworks/Python.framework/Versions/3.7/bin:$PATH
-PATH=/usr/local/opt/ruby/bin:$PATH
+PATH=$PATH:$HOME/.cargo/bin
 
 export GOPATH=$HOME/.go
 PATH=$PATH:$GOPATH/bin
@@ -82,10 +78,7 @@ ZSH_THEME="robbyrussell"
 plugins=(git gitfast thefuck zsh_reload)
 
 source $ZSH/oh-my-zsh.sh
-
-if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
-  eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-fi
+source $HOME/.cargo/env
 
 # fnm
 # @see https://github.com/Schniz/fnm#zsh
@@ -93,6 +86,7 @@ if type fnm &>/dev/null; then
   eval "$(fnm env)"
 fi
 
+# This is provided by oh-my-zsh's git and gitfast plugins
 # Git prompt config
 if [[ -n `type __git_ps1` ]]; then
   GIT_PS1_SHOWDIRTYSTATE=1
@@ -114,7 +108,7 @@ fi
 
 # User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
+# export MANPATH="`brew --prefix`/man:$MANPATH"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -172,22 +166,3 @@ function sizes {
   totalGzipped=$(gnumfmt --to=iec --suffix=B "$tg")
   printf "%8s %8s  %s\n" $totalMinified $totalGzipped "*total*"
 }
-
-# SSH Agent
-SSH_ENV=~/.ssh/environment
-
-function startagent {
-  /usr/bin/ssh-agent | sed 's/^echo/# echo/' > ${SSH_ENV};
-  chmod 600 ${SSH_ENV};
-  . ${SSH_ENV} > /dev/null;
-  /usr/bin/ssh-add;
-}
-
-if [ -f "${SSH_ENV}" ]; then
-  . ${SSH_ENV} > /dev/null;
-  ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
-    startagent;
-  };
-else
-  startagent;
-fi
