@@ -6,8 +6,21 @@ PATH=$PATH:./node_modules/.bin
 # brew install rust
 PATH=$PATH:$HOME/.cargo/bin
 
+# ```
 # brew install deno && deno install --allow-read --allow-write --allow-env \
 # --allow-net --allow-run --no-check -f https://deno.land/x/deploy/deployctl.ts
+# ```
+#
+# Example (zsh + oh-my-zsh) [recommended for zsh users] :
+#
+# ```
+# mkdir ~/.oh-my-zsh/custom/plugins/deno
+# deno completions zsh > ~/.oh-my-zsh/custom/plugins/deno/_deno
+# ```
+#
+# Then add the following `deno` to the list of plugins
+#
+# @see https://deno.land/manual@v1.12.1/getting_started/setup_your_environment
 PATH=$PATH:$HOME/.deno/bin
 
 # brew install go
@@ -83,7 +96,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git gitfast thefuck zsh_reload)
+plugins=(deno git gitfast thefuck zsh_reload)
 
 source $ZSH/oh-my-zsh.sh
 source $HOME/.cargo/env
