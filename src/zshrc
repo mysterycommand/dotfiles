@@ -2,6 +2,7 @@
 
 PATH=$PATH:./node_modules/.bin
 PATH=$PATH:~/.local/bin
+PATH=/home/linuxbrew/.linuxbrew/opt/awscli@1/bin:$PATH
 export PATH
 
 # Path to your oh-my-zsh installation.

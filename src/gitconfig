@@ -29,7 +29,7 @@
 	changed = green
 	untracked = cyan
 [core]
-  excludesfile = ~/.gitexcludes
+	excludesFile = /home/matt/.gitexcludes
 [alias]
   br = branch
   co = checkout
