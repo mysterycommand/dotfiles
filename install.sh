@@ -1,12 +1,6 @@
-echo Symlinking ~/.bash_profile.
-ln -s ~/.dotfiles/.bash_profile ~/.bash_profile
-echo Symlinking ~/.screenrc.
-ln -s ~/.dotfiles/.screenrc ~/.screenrc
-echo Symlinking ~/.tmux.conf.
-ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
-echo Done.
-echo Symlinking ~/.jshintrc.
-ln -s ~/.dotfiles/.jshintrc ~/.jshintrc
-echo Symlinking ~/.editorconfig.
-ln -s ~/.dotfiles/.editorconfig ~/.editorconfig
-echo Done.
+#!/usr/bin/env bash
+ln -s `pwd`/src/bash_profile ~/.bash_profile
+ln -s `pwd`/src/editorconfig ~/.editorconfig
+ln -s `pwd`/src/gitconfig ~/.gitconfig
+ln -s `pwd`/src/gitexcludes ~/.gitexcludes
+ln -s `pwd`/src/zshrc ~/.zshrc
