@@ -1,5 +1,5 @@
 [user]
-  email = matt@mysterycommand.com
+  email = matt.hayes@wizards.com
   name = Matt Hayes
 [push]
   default = simple
@@ -29,7 +29,7 @@
 	changed = green
 	untracked = cyan
 [core]
-	excludesFile = /home/matt/.gitexcludes
+	excludesFile = /home/hayesm1/.gitexcludes
 [alias]
   br = branch
   co = checkout
