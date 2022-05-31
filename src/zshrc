@@ -95,7 +95,7 @@ if [[ -n `type __git_ps1` ]]; then
   GIT_PS1_SHOWUNTRACKEDFILES=1
   GIT_PS1_SHOWUPSTREAM="verbose"
   GIT_PS1_SHOWCOLORHINTS=1
-  precmd () { __git_ps1 $'\n'"%~" $'\n'"%* $ "}
+  precmd () { __git_ps1 $'\n'"%~" $'\n'"%* $ " }
 fi
 
 # Homebrew completions
