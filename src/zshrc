@@ -1,8 +1,5 @@
-#### FIG ENV VARIABLES ####
-# Please make sure this block is at the start of this file.
-[ -s ~/.fig/shell/pre.sh ] && source ~/.fig/shell/pre.sh
-#### END FIG ENV VARIABLES ####
-
+# Fig pre block. Keep at the top of this file.
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 # If you come from bash you might have to change your $PATH.
 
 # add local node_modules to path, I *am* `npx`
@@ -31,6 +28,10 @@ PATH=$PATH:$HOME/.deno/bin
 # brew install go
 export GOPATH=$HOME/.go
 PATH=$PATH:$GOPATH/bin
+
+# curl -L  https://xata.io/install.sh | sh
+export XATA_INSTALL=$HOME/.xata
+PATH="$XATA_INSTALL/bin:$PATH"
 
 export PATH
 
@@ -193,7 +194,5 @@ function sizes {
   printf "%8s %8s  %s\n" $totalMinified $totalGzipped "*total*"
 }
 
-#### FIG ENV VARIABLES ####
-# Please make sure this block is at the end of this file.
-[ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
-#### END FIG ENV VARIABLES ####
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
