@@ -107,6 +107,10 @@ plugins=(deno git gitfast thefuck)
 source $ZSH/oh-my-zsh.sh
 source $HOME/.cargo/env
 
+if [ -f $HOME/.zsh_local ]; then
+    source $HOME/.zsh_local
+fi
+
 # fnm
 # @see https://github.com/Schniz/fnm#zsh
 if type fnm &>/dev/null; then
