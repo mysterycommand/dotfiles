@@ -31,7 +31,13 @@ PATH=$PATH:$GOPATH/bin
 
 # curl -L  https://xata.io/install.sh | sh
 export XATA_INSTALL=$HOME/.xata
-PATH="$XATA_INSTALL/bin:$PATH"
+PATH=$XATA_INSTALL/bin:$PATH
+
+# install .NET Core 3.1 from https://dotnet.microsoft.com/en-us/download/dotnet/3.1
+# install .NET Core 3.1 Runtime from https://dotnet.microsoft.com/en-us/download/dotnet/3.1/runtime
+# add DOTNET_ROOT to PATH per https://learn.microsoft.com/en-us/dotnet/core/install/macos#download-and-manually-install
+export DOTNET_ROOT=/usr/local/share/dotnet/x64
+PATH=$PATH:$DOTNET_ROOT
 
 export PATH
 
@@ -197,6 +203,8 @@ function sizes {
   totalGzipped=$(gnumfmt --to=iec --suffix=B "$tg")
   printf "%8s %8s  %s\n" $totalMinified $totalGzipped "*total*"
 }
+
+typeset -U PATH
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
