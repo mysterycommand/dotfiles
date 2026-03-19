@@ -6,36 +6,12 @@ PATH=$PATH:./node_modules/.bin
 # brew install rust
 PATH=$PATH:$HOME/.cargo/bin
 
-# ```
-# brew install deno && deno install --allow-read --allow-write --allow-env \
-# --allow-net --allow-run --no-check -f https://deno.land/x/deploy/deployctl.ts
-# ```
-#
-# Example (zsh + oh-my-zsh) [recommended for zsh users] :
-#
-# ```
-# mkdir ~/.oh-my-zsh/custom/plugins/deno
-# deno completions zsh > ~/.oh-my-zsh/custom/plugins/deno/_deno
-# ```
-#
-# Then add the following `deno` to the list of plugins
-#
-# @see https://deno.land/manual@v1.12.1/getting_started/setup_your_environment
+# curl -fsSL https://deno.land/install.sh | sh
 PATH=$PATH:$HOME/.deno/bin
 
 # brew install go
 export GOPATH=$HOME/.go
 PATH=$PATH:$GOPATH/bin
-
-# curl -L  https://xata.io/install.sh | sh
-export XATA_INSTALL=$HOME/.xata
-PATH=$XATA_INSTALL/bin:$PATH
-
-# install .NET Core 3.1 from https://dotnet.microsoft.com/en-us/download/dotnet/3.1
-# install .NET Core 3.1 Runtime from https://dotnet.microsoft.com/en-us/download/dotnet/3.1/runtime
-# add DOTNET_ROOT to PATH per https://learn.microsoft.com/en-us/dotnet/core/install/macos#download-and-manually-install
-export DOTNET_ROOT=/usr/local/share/dotnet/x64
-PATH=$PATH:$DOTNET_ROOT
 
 export PATH
 
